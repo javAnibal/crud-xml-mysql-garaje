@@ -13,7 +13,7 @@ public class Garaje {
 
     @XmlElementWrapper(name = "coches") // -> Elemento Padre
     @XmlElement(name = "coche") // -> Elemento hijo
-    private final List<Garaje> cochesRegistrados;
+    private final List<Coche> cochesRegistrados;
 
 
 
@@ -22,7 +22,12 @@ public class Garaje {
     }
 
 
-    public List<Garaje> getCochesRegistrados() {
+    public List<Coche> getCochesRegistrados() {
         return cochesRegistrados;
+    }
+
+    public void agregarCoche(Coche coche){
+        this.cochesRegistrados.add(coche);
+
     }
 }
