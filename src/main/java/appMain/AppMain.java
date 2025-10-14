@@ -1,0 +1,40 @@
+package appMain;
+
+import controller.GarajeController;
+import model.Coche;
+import utils.GarajeException;
+
+import java.nio.file.Path;
+
+public class AppMain {
+
+
+    private static final String RUTA_FICHERO =  Path.of(System.getProperty("user.dir"), "data", "garaje.xml").toString();
+
+    public static void main(String[] args) {
+
+
+        GarajeController garajeController = new GarajeController();
+
+        //Creando Objetos
+        Coche c1 = new Coche(1,"8910JCY", "Nissan", "Pulsar");
+        Coche c2 = new Coche(2,"1234ABC", "Honda", "Civic");
+
+        //Agregando los coches
+
+        garajeController.agregarCoche(c1);
+        garajeController.agregarCoche(c2);
+
+        try{
+
+            garajeController.guardarGarajeEnXML(RUTA_FICHERO);
+
+
+        } catch (GarajeException e) {
+            System.err.println("Error al guardar el fichero " + e.getMessage());
+        }
+
+
+
+    }
+}
