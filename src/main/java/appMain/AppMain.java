@@ -30,12 +30,12 @@ public class AppMain {
 
         try {
 
-            System.out.println("DE OBJETO -> a XML ");
+            System.out.println(" \n === DE OBJETO -> a XML === \n");
 
             garajeController.guardarGarajeEnXML(RUTA_FICHERO);
             garajeView.mostrarGaraje(garajeController.getGaraje());
 
-            System.out.println("DE XML -> a OBJETO ");
+            System.out.println("\n === DE XML -> a OBJETO === \n");
 
             garajeController.cargarDesdeXML(RUTA_FICHERO2);
             garajeView.mostrarGaraje(garajeController.getGaraje());
