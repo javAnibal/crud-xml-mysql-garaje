@@ -30,12 +30,15 @@ public class AppMain {
 
         try {
 
-          //  garajeController.guardarGarajeEnXML(RUTA_FICHERO);
-           // garajeView.mostrarGaraje(garajeController.getGaraje());
+            System.out.println("DE OBJETO -> a XML ");
 
-             garajeController.cargarDesdeXML(RUTA_FICHERO2);
+            garajeController.guardarGarajeEnXML(RUTA_FICHERO);
+            garajeView.mostrarGaraje(garajeController.getGaraje());
 
-             garajeView.mostrarGaraje(garajeController.getGaraje());
+            System.out.println("DE XML -> a OBJETO ");
+
+            garajeController.cargarDesdeXML(RUTA_FICHERO2);
+            garajeView.mostrarGaraje(garajeController.getGaraje());
 
 
         } catch (GarajeException e) {

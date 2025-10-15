@@ -4,14 +4,14 @@
         <coche>
             <id>1</id>
             <matricula>8910JCY</matricula>
-            <marca>Nissan</marca>
-            <modelo>Pulsar</modelo>
+            <marca>Toyota</marca>
+            <modelo>Corolla</modelo>
         </coche>
         <coche>
             <id>2</id>
             <matricula>1234ABC</matricula>
-            <marca>Honda</marca>
-            <modelo>Civic</modelo>
+            <marca>Mazda</marca>
+            <modelo>C-R3</modelo>
         </coche>
     </coches>
 </garaje>
