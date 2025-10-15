@@ -3,6 +3,7 @@ package controller;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
 import model.Coche;
 import model.Garaje;
 import utils.GarajeException;
@@ -31,19 +32,36 @@ public class GarajeController {
         garaje.agregarCoche(coche);
     }
 
-    //================= MÉT-ODO PRINCIPAL =================
+    //==========================================================================================
 
-    public void guardarGarajeEnXML(String rutaArchivo) throws GarajeException {
+    //                      Marshaller [CREACIÓN OBJETO -> XML]
+
+    //==========================================================================================
 
 
-        try{
+    private void verificarSiFicheroExiste(String rutaFichero) throws GarajeException {
 
-            File archivo = new File(rutaArchivo);
-            // 💡 CREAR EL DIRECTORIO PADRE SI NO EXISTE
+
+        try {
+
+            File archivo = new File(rutaFichero);
+            // CREAR EL DIRECTORIO PADRE SI NO EXISTE
             File directorioPadre = archivo.getParentFile();
             if (directorioPadre != null && !directorioPadre.exists()) {
                 directorioPadre.mkdirs();
             }
+
+        } catch (Exception e) {
+            throw new GarajeException("No se podido crear el fichero");
+        }
+    }
+
+    public void guardarGarajeEnXML(String rutaFichero) throws GarajeException {
+
+
+        try {
+
+            verificarSiFicheroExiste(rutaFichero);
 
             // 1) -> Creamos el contexto [ -Clase raíz- ]
             JAXBContext context = JAXBContext.newInstance(Garaje.class);
@@ -55,12 +73,47 @@ public class GarajeController {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             // 4) -> Realizar el Marshalling [ -Guardar- ]
-            marshaller.marshal(garaje, new File(rutaArchivo));
+            marshaller.marshal(garaje, new File(rutaFichero));
 
         } catch (JAXBException ex) {
             throw new GarajeException("Error al guardar el garaje en XML: " + ex.getMessage());
 
         }
+    }
+
+
+    //==========================================================================================
+
+    //                      UnMarshalling [CREACIÓN XML -> OBJETO]
+
+    //==========================================================================================
+
+
+
+    public void cargarDesdeXML(String rutaFichero) throws GarajeException{
+
+
+        try {
+
+            File archivo = new File(rutaFichero);
+            if(!archivo.exists()){
+                throw new GarajeException("El archivo XML no existe " + rutaFichero);
+            }
+
+            JAXBContext context = JAXBContext.newInstance(Garaje.class);
+
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+
+            this.garaje = (Garaje) unmarshaller.unmarshal(archivo);
+
+
+
+        } catch (JAXBException e) {
+            throw new GarajeException("No se podido leer el XML");
+        }
+
+
+
     }
 
 }
