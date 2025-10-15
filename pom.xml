@@ -16,10 +16,6 @@
 
 
 
-    // Permite a la aplicación procesar (leer y escribir) datos XML de forma sencilla
-    // a travéz de la tecnología JAXB [Jakarta]
-    // proporciona implementación API
-
     <dependencies>
         <!-- API de Jakarta XML Binding -->
         <dependency>
