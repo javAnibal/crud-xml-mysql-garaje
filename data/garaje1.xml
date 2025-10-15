@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<garaje>
+    <coches>
+        <coche>
+            <id>1</id>
+            <matricula>8910JCY</matricula>
+            <marca>Nissan</marca>
+            <modelo>Pulsar</modelo>
+        </coche>
+        <coche>
+            <id>2</id>
+            <matricula>1234ABC</matricula>
+            <marca>Honda</marca>
+            <modelo>Civic</modelo>
+        </coche>
+    </coches>
+</garaje>

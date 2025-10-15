@@ -11,6 +11,7 @@ public class AppMain {
 
 
     private static final String RUTA_FICHERO = Path.of(System.getProperty("user.dir"), "data", "garaje.xml").toString();
+    private static final String RUTA_FICHERO2 = Path.of(System.getProperty("user.dir"), "data", "garaje1.xml").toString();
 
     public static void main(String[] args) {
 
@@ -29,11 +30,12 @@ public class AppMain {
 
         try {
 
-            garajeController.guardarGarajeEnXML(RUTA_FICHERO);
-            garajeView.mostrarGaraje(garajeController.getGaraje());
+          //  garajeController.guardarGarajeEnXML(RUTA_FICHERO);
+           // garajeView.mostrarGaraje(garajeController.getGaraje());
 
-            //  garajeController.cargarDesdeXML(RUTA_FICHERO);
-            //  garajeView.mostrarGaraje(garajeController.getGaraje());
+             garajeController.cargarDesdeXML(RUTA_FICHERO2);
+
+             garajeView.mostrarGaraje(garajeController.getGaraje());
 
 
         } catch (GarajeException e) {
