@@ -14,8 +14,7 @@ public class Garaje {
 
     @XmlElementWrapper(name = "coches") // -> Elemento Padre
     @XmlElement(name = "coche") // -> Elemento hijo
-    private List<Coche> cochesRegistrados;
-
+    private List<Coche> cochesRegistrados = new ArrayList<>();
 
 
     public Garaje() {
@@ -28,13 +27,23 @@ public class Garaje {
     }
 
 
-
     //M() metodo propio
 
-    public void agregarCoche(Coche coche){
+    public void agregarCoche(Coche coche) {
 
         this.cochesRegistrados.add(coche);
     }
 
+    public boolean estaVacio() {
 
+        return this.cochesRegistrados.isEmpty();
+
+    }
+
+    @Override
+    public String toString() {
+        return "Garaje{" +
+                "cochesRegistrados=" + cochesRegistrados +
+                '}';
+    }
 }
